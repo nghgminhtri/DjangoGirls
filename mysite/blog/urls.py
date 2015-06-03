@@ -1,5 +1,8 @@
-from django.conf.urls import include, url
 from . import views
+from django.conf.urls import patterns, include, url
+
+from django.contrib import admin
+admin.autodiscover()
 
 urlpatterns = [
     url(r'^$', views.post_list),
@@ -11,4 +14,5 @@ urlpatterns = [
     url(r'^post/(?P<pk>[0-9]+)/unpublish/$', views.post_unpublish, name='post_unpublish'),
     url(r'^post/(?P<pk>[0-9]+)/remove/$', views.post_remove, name='post_remove'),
     url(r'^accounts/login/$', 'django.contrib.auth.views.login'),
+    url(r'^accounts/logout/$', 'django.contrib.auth.views.logout'),
 ]
