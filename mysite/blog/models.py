@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.decorators import login_required
 
 class Post(models.Model):
     author = models.ForeignKey('auth.User')

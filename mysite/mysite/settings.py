@@ -40,6 +40,8 @@ INSTALLED_APPS = (
     'blog',
 )
 
+LOGIN_REDIRECT_URL = '/'
+
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
