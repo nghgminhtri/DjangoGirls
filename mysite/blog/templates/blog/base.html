@@ -9,7 +9,8 @@
 	<body>
 	    <div class="page-header">
             <a href="{% url 'blog.views.post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-	        <h1><b><i><a href="/">Trí Nguyễn</a></i></b></h1>
+	        <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
+            <h1><b><i><a href="/">Trí Nguyễn</a></i></b></h1>
 	    </div>
 	    <div class="content container">
 	        <div class="row">
