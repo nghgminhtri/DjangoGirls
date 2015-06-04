@@ -8,6 +8,10 @@
             </div>
             <h1><a href="{% url 'blog.views.post_detail' pk=post.pk %}"><i>{{ post.title }}</i></a></a></h1>
             <p>{{ post.text|linebreaks }}</p>
+            <a href="{% url 'blog.views.post_detail' pk=post.pk %}">Approved comments: {{ post.approved_comments.count }}</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'blog.views.post_detail' pk=post.pk %}">Unapproved comments: {{ post.unapproved_comments.count }}</a>
+            {% endif %}       
         </div>
     {% endfor %}
 {% endblock content %}

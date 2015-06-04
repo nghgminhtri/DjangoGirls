@@ -13,4 +13,42 @@
         <h1>{{ post.title }}</h1>
         <p>{{ post.text|linebreaks }}</p>
     </div>
+    <hr>
+    <a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
+    {% if user.is_authenticated %}
+        {% for comment in post.comments.all %}
+            <div class="comment">
+                <div class="date">
+                    {{ comment.created_date }}
+                    <a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+                    {% if not comment.approved %}
+                        <a class="btn btn-default" href="{% url 'comment_approve' pk=comment.pk %}"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                    {% else %}
+                        <a class="btn btn-default" href="{% url 'comment_unapprove' pk=comment.pk %}"><span class="glyphicon glyphicon-arrow-down"></span></a>
+                    {% endif %}
+                </div>
+                <strong>{{ comment.author }}</strong>
+                <p>{{ comment.text|linebreaks }}</p>
+            </div>
+        {% empty %}
+            <p>No comments.</p>
+        {% endfor %}
+    {% else %}
+        {% for comment in post.comments.all %}
+            <div class="comment">
+                <div class="date">
+                    {% if comment.approved %}
+                        {{ comment.created_date }}
+                    {% endif %}
+                </div>
+                {% if comment.approved %}
+                    <strong>{{ comment.author }}</strong>
+                    <p>{{ comment.text|linebreaks }}</p>
+                {% endif %}
+            </div>
+        {% empty %}
+            <p>No comments.</p>
+        {% endfor %}
+    {% endif %}       
+       
 {% endblock %}

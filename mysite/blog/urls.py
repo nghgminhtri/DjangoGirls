@@ -15,4 +15,8 @@ urlpatterns = [
     url(r'^post/(?P<pk>[0-9]+)/remove/$', views.post_remove, name='post_remove'),
     url(r'^accounts/login/$', 'django.contrib.auth.views.login'),
     url(r'^accounts/logout/$', 'django.contrib.auth.views.logout'),
+    url(r'^post/(?P<pk>[0-9]+)/comment/$', views.add_comment_to_post, name='add_comment_to_post'),
+    url(r'^comment/(?P<pk>[0-9]+)/approve/$', views.comment_approve, name='comment_approve'),
+    url(r'^comment/(?P<pk>[0-9]+)/unapprove/$', views.comment_unapprove, name='comment_unapprove'),
+    url(r'^comment/(?P<pk>[0-9]+)/remove/$', views.comment_remove, name='comment_remove'),
 ]
