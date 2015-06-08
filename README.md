@@ -1,1 +1,1 @@
-# DjangoGirls
+# First Django Project
